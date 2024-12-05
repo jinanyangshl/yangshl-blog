@@ -1,0 +1,37 @@
+hexo/
+  |- node_modules/  # hexo需要的模块，不需要上传GitHub
+  |- themes/        # 主题文件，需要上传GitHub的dev分支
+  |- sources/       # 博文md文件，需要上传GitHub的dev分支
+  |- public/        # 生成的静态页面，由hexo deploy自动上传到gh-page分支
+  |- package.json   # 记录hexo需要的包信息，不需要上传GitHub
+  |- _config.yml    # 全局配置文件，需要上传GitHub的dev分支
+  |- .gitignore     # hexo生成默认的.gitignore，它已经配置好了不需要上传的hexo文件
+
+
+将hexo部署到GitHub
+这一步，我们就可以将hexo和GitHub关联起来，也就是将hexo生成的文章部署到GitHub上，打开站点配置文件 _config.yml，翻到最后，修改为
+YourgithubName就是你的GitHub账户
+
+deploy:
+  type: git
+  repo: https://github.com/YourgithubName/YourgithubName.github.io.git
+  branch: master
+1
+2
+3
+4
+这个时候需要先安装deploy-git ，也就是部署的命令,这样你才能用命令部署到GitHub。
+
+npm install hexo-deployer-git --save
+1
+然后
+
+hexo clean
+hexo generate
+hexo deploy
+
+config.yml添加
+deploy:
+  type: 'git'
+  repo: https://github.com/jinanyangshl/JINANYANGSHL.github.io.git
+  branch: master
